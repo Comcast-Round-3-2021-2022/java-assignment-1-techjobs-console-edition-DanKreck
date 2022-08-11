@@ -79,7 +79,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toUpperCase().contains(value.toUpperCase())) {
                 jobs.add(row);
             }
         }
@@ -99,7 +99,17 @@ public class JobData {
         loadData();
 
         // TODO - implement this method
-        return null;
+        ArrayList<HashMap<String, String>> found = new ArrayList<>();
+
+        for (HashMap<String, String> jobs : allJobs){
+            for (String results : jobs.values()){
+
+                if(results.toUpperCase().contains(value.toUpperCase())){
+                    found.add(jobs);
+                }
+            }
+        }
+        return found;
     }
 
     /**
